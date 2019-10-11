@@ -1,11 +1,18 @@
-//if og while nested
-//parenthEsis for AND og OR
-GL
+/*
+This is the input file created by Jákup viljam Dam, Thaer Almalla and Asama Hayder
+and this is a comment.
+*/
+GL      //program skal starte med GL
+a = 1+2*5       //assign variables, a bliver lig 11
+b = 12
 c = 5
-if(c==5 && (5==5 && 6==6)){
-
+if(c==5 && a < b){      //if statement med forskellige operatorer
+    while(c < 10){      //nested while loop
+        c = c+1     //inkrementere c op til 10
+    }
 }
-c
-GG
+
+c+a       //printer c+a ud
+GG      //program skal slutte med GG
 
 

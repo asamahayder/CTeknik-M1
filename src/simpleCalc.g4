@@ -25,42 +25,15 @@ conditionsBoolean :
         | '('e=conditionsBoolean')'#ConditionBooleanWithParenthesis
         ;
 
-
-COND1    :
-      '=='
-    | '!='
-    | '<'
-    | '>'
-    | '<='
-    | '>='
-    ;
-
-COND2 :
-    '&&'
-    |'||'
-    ;
-
 statement :
-            a= assign
+          a= assign
         | i= if_statement
         | ie= if_else_statement
         | w= while_loop
         ;
 
-//vores version af sequence
-//sequence : '[' as+=assign (','assign)* ']';
-//[x=5, b=7, h=9];
-
-
-//deres version
-//TODO plz help
-/*assigment : ass=assign
-          | expri=expr
-          ;*/
-//TODO hvordan kan vi få en liste i vores version? denne version acceptere en lonely comma
 sequence : (as+=statement)* e=expr;
 
-//TODO how to fix 5 == 5 == 5...
 if_statement : 'if('e1=conditionsNumerical'){'s1+=statement*'}' #IfStatementNumericalCondition
             |'if('e1=conditionsBoolean'){'s1+=statement*'}' #IfStatementBooleanCondition
             ;
@@ -75,6 +48,20 @@ while_loop : 'while('e1=conditionsNumerical'){'s1+=statement*'}' #WhileNumerical
 
 OP1 : ('-'|'+') ;
 OP2 : ('*'|'/');
+
+COND1    :
+      '=='
+    | '!='
+    | '<'
+    | '>'
+    | '<='
+    | '>='
+    ;
+
+COND2 :
+    '&&'
+    |'||'
+    ;
 
 ID    : ALPHA (ALPHA|NUM)* ;
 FLOAT : NUM+ ('.' NUM+)? ;

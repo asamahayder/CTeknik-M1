@@ -51,7 +51,6 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
     public static HashMap<String,Double> env=new HashMap<String,Double>();
 
     @Override
-    //TODO der skal være et for-loop her. se evt. modul 4 opgven på inside
     public Double visitStart(simpleCalcParser.StartContext ctx) {
         return visit(ctx.s);
     }
@@ -63,7 +62,6 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
         String varname=ctx.x.getText();
         Double v = visit(ctx.e);
         env.put(varname,v);
-
         return v;
     }
 
@@ -114,9 +112,7 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
 
     @Override
     public Double visitConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx) {
-
         String condition = ctx.c1.getText();
-//TODO doe sthis work??????
         if(condition.equals("==")) {
             if (visit(ctx.e1).doubleValue() == visit(ctx.e2).doubleValue()) {
                 return 1.0;
@@ -206,7 +202,6 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
 
     @Override
     public Double visitStatement(simpleCalcParser.StatementContext ctx) {
-//TODO does this work?
         if (ctx.a != null) {
             return visit(ctx.a);
         }if (ctx.i != null) {
