@@ -6,13 +6,14 @@ GL      //program skal starte med GL
 a = 1+2*5       //assign variables, a bliver lig 11
 b = 12
 c = 5
+d = (1+2)*3
 if(c==5 && a < b){      //if statement med forskellige operatorer
     while(c < 10){      //nested while loop
         c = c+1     //inkrementere c op til 10
     }
 }
 
-c+a       //printer c+a ud
+c+a+d       //printer c+a ud
 GG      //program skal slutte med GG
 
 
