@@ -23,7 +23,6 @@ conditionsBoolean :
         e1=conditionsNumerical c=COND2 e2=conditionsNumerical #ConditionBooleanWithNumerical
         | e1=conditionsBoolean c=COND2 e2=conditionsBoolean #ConditionBooleanWithMultipleBooleans
         | '('e=conditionsBoolean')'#ConditionBooleanWithParenthesis
-
         ;
 
 
