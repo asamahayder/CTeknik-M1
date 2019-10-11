@@ -118,7 +118,7 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
         String condition = ctx.c1.getText();
 //TODO doe sthis work??????
         if(condition.equals("==")) {
-            if (visit(ctx.e1) == visit(ctx.e2)) {
+            if (visit(ctx.e1).doubleValue() == visit(ctx.e2).doubleValue()) {
                 return 1.0;
             }else{
                 return 0.0;
@@ -153,7 +153,7 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
             }
         }
         if(condition.equals("!=")) {
-            if (visit(ctx.e1) != visit(ctx.e2)){
+            if (visit(ctx.e1).doubleValue() != visit(ctx.e2).doubleValue()){
                 return 1.0;
             }else {
                 return 0.0;
@@ -169,8 +169,8 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
 
     @Override
     public Double visitConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx) {
-        if (ctx.c.toString().equals("&&")){
-            if (visit(ctx.e1) == 1.0 && visit(ctx.e2) == 1.0){
+        if (ctx.c.getText().equals("&&")){
+            if ((visit(ctx.e1) == 1.0) && (visit(ctx.e2) == 1.0)){
                 return 1.0;
             }else{
                 return 0.0;
@@ -188,21 +188,20 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
 
     @Override
     public Double visitConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx) {
-        if (ctx.c.toString().equals("&&")){
+        if (ctx.c.getText().equals("&&")){
             if (visit(ctx.e1) == 1.0 && visit(ctx.e2) == 1.0){
                 return 1.0;
             }else{
                 return 0.0;
             }
         }
-        if(ctx.c.toString().equals("||")){
+        else {
             if (visit(ctx.e1) == 1.0 || visit(ctx.e2) == 1.0){
                 return 1.0;
             }else{
                 return 0.0;
             }
         }
-        return null;
     }
 
     @Override
