@@ -68,11 +68,6 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
     }
 
     @Override
-    public Double visitCondition(simpleCalcParser.ConditionContext ctx) {
-        return null;
-    }
-
-    @Override
     public Double visitParenthesis(simpleCalcParser.ParenthesisContext ctx){
         return visit(ctx.e);
     };
@@ -97,6 +92,7 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
     @Override
     public Double visitSignedConstant(simpleCalcParser.SignedConstantContext ctx) {
         return Double.parseDouble(ctx.getText());
+
     }
 
     @Override
@@ -117,20 +113,111 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
     }
 
     @Override
-    public Double visitCond(simpleCalcParser.CondContext ctx) {
+    public Double visitConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx) {
+
+        String condition = ctx.c1.getText();
+//TODO doe sthis work??????
+        if(condition.equals("==")) {
+            if (visit(ctx.e1) == visit(ctx.e2)) {
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(condition.equals("<")) {
+            if (visit(ctx.e1) < visit(ctx.e2)) {
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(condition.equals(">")) {
+            if (visit(ctx.e1) > visit(ctx.e2)) {
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(condition.equals("<=")) {
+            if (visit(ctx.e1) <= visit(ctx.e2)) {
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(condition.equals(">=")) {
+            if (visit(ctx.e1) >= visit(ctx.e2)) {
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(condition.equals("!=")) {
+            if (visit(ctx.e1) != visit(ctx.e2)){
+                return 1.0;
+            }else {
+                return 0.0;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx) {
+        return visit(ctx.e);
+    }
+
+    @Override
+    public Double visitConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx) {
+        if (ctx.c.toString().equals("&&")){
+            if (visit(ctx.e1) == 1.0 && visit(ctx.e2) == 1.0){
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(ctx.c.toString().equals("||")){
+            if (visit(ctx.e1) == 1.0 || visit(ctx.e2) == 1.0){
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx) {
+        if (ctx.c.toString().equals("&&")){
+            if (visit(ctx.e1) == 1.0 && visit(ctx.e2) == 1.0){
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
+        if(ctx.c.toString().equals("||")){
+            if (visit(ctx.e1) == 1.0 || visit(ctx.e2) == 1.0){
+                return 1.0;
+            }else{
+                return 0.0;
+            }
+        }
         return null;
     }
 
     @Override
     public Double visitStatement(simpleCalcParser.StatementContext ctx) {
 //TODO does this work?
-        if (!ctx.a.isEmpty()) {
-            return visit(ctx.assign());
-        }
-        if (!ctx.i.isEmpty()){
+        if (ctx.a != null) {
+            return visit(ctx.a);
+        }if (ctx.i != null) {
             return visit(ctx.i);
+        }if (ctx.ie != null) {
+            return visit(ctx.ie);
+        }if (ctx.w != null){
+            return visit(ctx.w);
         }
-        else return visit(ctx.w);
+        return null;
     }
 
     @Override
@@ -142,14 +229,70 @@ class Interpreter extends AbstractParseTreeVisitor<Double> implements simpleCalc
     }
 
     @Override
-    public Double visitIf_statement(simpleCalcParser.If_statementContext ctx) {
-         (if(visit(ctx.e1) == 1.0){
-             return visit(ctx.e1);
-        })
+    public Double visitIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx) {
+        if(visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }
+        return null;
     }
 
     @Override
-    public Double visitWhile_loop(simpleCalcParser.While_loopContext ctx) {
+    public Double visitIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx) {
+        if(visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx) {
+        if(visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }else{
+            for (simpleCalcParser.StatementContext a: ctx.s2) {
+                visit(a);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx) {
+        if(visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }else{
+            for (simpleCalcParser.StatementContext a: ctx.s2) {
+                visit(a);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx) {
+        while (visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Double visitWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx) {
+        while (visit(ctx.e1) == 1.0){
+            for(simpleCalcParser.StatementContext a : ctx.s1){
+                visit(a);
+            }
+        }
         return null;
     }
 }

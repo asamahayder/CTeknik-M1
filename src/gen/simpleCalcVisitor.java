@@ -22,13 +22,6 @@ public interface simpleCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssign(simpleCalcParser.AssignContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Condition}
-	 * labeled alternative in {@link simpleCalcParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCondition(simpleCalcParser.ConditionContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code Parenthesis}
 	 * labeled alternative in {@link simpleCalcParser#expr}.
 	 * @param ctx the parse tree
@@ -71,11 +64,32 @@ public interface simpleCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAdditionAndSubtraction(simpleCalcParser.AdditionAndSubtractionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link simpleCalcParser#cond}.
+	 * Visit a parse tree produced by {@link simpleCalcParser#conditionsNumerical}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCond(simpleCalcParser.CondContext ctx);
+	T visitConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConditionBooleanWithParenthesis}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConditionBooleanWithMultipleBooleans}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConditionBooleanWithNumerical}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link simpleCalcParser#statement}.
 	 * @param ctx the parse tree
@@ -89,15 +103,45 @@ public interface simpleCalcVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSequence(simpleCalcParser.SequenceContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link simpleCalcParser#if_statement}.
+	 * Visit a parse tree produced by the {@code IfStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIf_statement(simpleCalcParser.If_statementContext ctx);
+	T visitIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link simpleCalcParser#while_loop}.
+	 * Visit a parse tree produced by the {@code IfStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitWhile_loop(simpleCalcParser.While_loopContext ctx);
+	T visitIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IfElseStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code IfElseStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code WhileNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code WhileBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx);
 }

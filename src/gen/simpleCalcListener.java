@@ -27,18 +27,6 @@ public interface simpleCalcListener extends ParseTreeListener {
 	 */
 	void exitAssign(simpleCalcParser.AssignContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Condition}
-	 * labeled alternative in {@link simpleCalcParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondition(simpleCalcParser.ConditionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Condition}
-	 * labeled alternative in {@link simpleCalcParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondition(simpleCalcParser.ConditionContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Parenthesis}
 	 * labeled alternative in {@link simpleCalcParser#expr}.
 	 * @param ctx the parse tree
@@ -111,15 +99,51 @@ public interface simpleCalcListener extends ParseTreeListener {
 	 */
 	void exitAdditionAndSubtraction(simpleCalcParser.AdditionAndSubtractionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link simpleCalcParser#cond}.
+	 * Enter a parse tree produced by {@link simpleCalcParser#conditionsNumerical}.
 	 * @param ctx the parse tree
 	 */
-	void enterCond(simpleCalcParser.CondContext ctx);
+	void enterConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link simpleCalcParser#cond}.
+	 * Exit a parse tree produced by {@link simpleCalcParser#conditionsNumerical}.
 	 * @param ctx the parse tree
 	 */
-	void exitCond(simpleCalcParser.CondContext ctx);
+	void exitConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConditionBooleanWithParenthesis}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConditionBooleanWithParenthesis}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConditionBooleanWithMultipleBooleans}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConditionBooleanWithMultipleBooleans}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConditionBooleanWithNumerical}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConditionBooleanWithNumerical}
+	 * labeled alternative in {@link simpleCalcParser#conditionsBoolean}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link simpleCalcParser#statement}.
 	 * @param ctx the parse tree
@@ -141,23 +165,75 @@ public interface simpleCalcListener extends ParseTreeListener {
 	 */
 	void exitSequence(simpleCalcParser.SequenceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link simpleCalcParser#if_statement}.
+	 * Enter a parse tree produced by the {@code IfStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterIf_statement(simpleCalcParser.If_statementContext ctx);
+	void enterIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link simpleCalcParser#if_statement}.
+	 * Exit a parse tree produced by the {@code IfStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitIf_statement(simpleCalcParser.If_statementContext ctx);
+	void exitIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link simpleCalcParser#while_loop}.
+	 * Enter a parse tree produced by the {@code IfStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 */
-	void enterWhile_loop(simpleCalcParser.While_loopContext ctx);
+	void enterIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link simpleCalcParser#while_loop}.
+	 * Exit a parse tree produced by the {@code IfStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_statement}.
 	 * @param ctx the parse tree
 	 */
-	void exitWhile_loop(simpleCalcParser.While_loopContext ctx);
+	void exitIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IfElseStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IfElseStatementNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code IfElseStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IfElseStatementBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#if_else_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code WhileNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code WhileNumericalCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code WhileBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code WhileBooleanCondition}
+	 * labeled alternative in {@link simpleCalcParser#while_loop}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx);
 }

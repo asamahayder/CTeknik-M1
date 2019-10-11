@@ -39,18 +39,6 @@ public class simpleCalcBaseListener implements simpleCalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondition(simpleCalcParser.ConditionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCondition(simpleCalcParser.ConditionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterParenthesis(simpleCalcParser.ParenthesisContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -123,13 +111,49 @@ public class simpleCalcBaseListener implements simpleCalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCond(simpleCalcParser.CondContext ctx) { }
+	@Override public void enterConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCond(simpleCalcParser.CondContext ctx) { }
+	@Override public void exitConditionsNumerical(simpleCalcParser.ConditionsNumericalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditionBooleanWithParenthesis(simpleCalcParser.ConditionBooleanWithParenthesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditionBooleanWithMultipleBooleans(simpleCalcParser.ConditionBooleanWithMultipleBooleansContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitConditionBooleanWithNumerical(simpleCalcParser.ConditionBooleanWithNumericalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -159,25 +183,73 @@ public class simpleCalcBaseListener implements simpleCalcListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIf_statement(simpleCalcParser.If_statementContext ctx) { }
+	@Override public void enterIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIf_statement(simpleCalcParser.If_statementContext ctx) { }
+	@Override public void exitIfStatementNumericalCondition(simpleCalcParser.IfStatementNumericalConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhile_loop(simpleCalcParser.While_loopContext ctx) { }
+	@Override public void enterIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhile_loop(simpleCalcParser.While_loopContext ctx) { }
+	@Override public void exitIfStatementBooleanCondition(simpleCalcParser.IfStatementBooleanConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfElseStatementNumericalCondition(simpleCalcParser.IfElseStatementNumericalConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIfElseStatementBooleanCondition(simpleCalcParser.IfElseStatementBooleanConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhileNumericalCondition(simpleCalcParser.WhileNumericalConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhileBooleanCondition(simpleCalcParser.WhileBooleanConditionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
